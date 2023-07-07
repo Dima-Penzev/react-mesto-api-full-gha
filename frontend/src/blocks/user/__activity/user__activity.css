@@ -1,0 +1,25 @@
+.user__activity {
+  margin: 0 auto;
+  margin-top: 7px;
+  max-width: 230px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.22;
+  text-align: center;
+  color: #FFFFFF;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@media screen and (min-width: 1000px) {
+  .user__activity {
+    margin: 0;
+    max-width: 350px;
+    margin-top: 8px;
+    text-align: left;
+    font-size: 18px;
+    grid-area: activity;
+    align-self: start;
+  }
+}

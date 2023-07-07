@@ -1,0 +1,14 @@
+.header__entry {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-decoration: none;
+  color: #ffffff;
+  transition: opacity 250ms ease-in;
+}
+
+.header__entry:hover {
+  opacity: 0.6;
+}

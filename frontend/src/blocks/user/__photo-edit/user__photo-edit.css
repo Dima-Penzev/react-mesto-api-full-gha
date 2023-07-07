@@ -1,0 +1,21 @@
+.user__photo-edit {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  transition: background 250ms ease-in;
+}
+
+.user__photo-edit:hover {
+  background: rgba(0, 0, 0, 0.8);
+  background-image: url(../../../images/photo-editor-button.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 26px 26px;
+  cursor: pointer;
+}

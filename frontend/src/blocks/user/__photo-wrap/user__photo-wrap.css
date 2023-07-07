@@ -1,0 +1,15 @@
+.user__photo-wrap {
+  position: relative;
+  grid-area: photo;
+  max-width: 120px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+@media screen and (min-width: 1000px) {
+  .user__photo-wrap {
+    margin: 0;
+    margin-right: 30px;
+  }
+}

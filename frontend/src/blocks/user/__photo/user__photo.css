@@ -1,0 +1,5 @@
+.user__photo {
+  display: block;
+  max-height: 120px;
+  min-width: 120px;
+}

@@ -1,0 +1,29 @@
+.user__add-card {
+  display: block;
+  margin: 0 auto;
+  margin-top: 33px;
+  min-width: 282px;
+  min-height: 50px;
+  border: 2px solid #FFFFFF;
+  border-radius: 2px;
+  background: transparent;
+  cursor: pointer;
+  background-image: url(../../../images/cross.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px 16px;
+  transition: opacity 250ms ease-in;
+}
+
+.user__add-card:hover {
+  opacity: .6;
+}
+
+@media screen and (min-width: 1000px) {
+  .user__add-card{
+    margin: 0;
+    min-width: 150px;
+    background-size: 22px 22px;
+    grid-area: add;
+  }
+}

@@ -1,0 +1,21 @@
+.header__menu {
+  border: none;
+  background: transparent;
+  background-image: url(../../../images/menu-burger.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 24px 24px;
+  width: 24px;
+  min-height: 24px;
+  transition: opacity 250ms ease-in;
+}
+
+.header__menu:hover {
+  opacity: 0.5;
+}
+
+@media (min-width: 400px) {
+  .header__menu {
+    display: none;
+  }
+}

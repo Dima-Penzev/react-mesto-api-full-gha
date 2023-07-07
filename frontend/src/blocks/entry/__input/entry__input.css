@@ -1,0 +1,18 @@
+.entry__input {
+  width: 100%;
+  padding-bottom: 13px;
+  box-sizing: border-box;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #cccccc;
+  border: none;
+  background: transparent;
+  border-bottom: 2px solid #cccccc;
+}
+
+.entry__input:not(:last-of-type) {
+  margin-bottom: 30px;
+}

@@ -1,0 +1,18 @@
+.user {
+  max-width: 880px;
+  padding-top: 38px;
+  padding-bottom: 36px;
+}
+
+@media screen and (min-width: 1000px) {
+  .user {
+    padding-top: 40px;
+    padding-bottom: 51px;
+    display: grid;
+    grid-template-columns: auto auto 1fr auto;
+    align-items: center;
+    grid-template-areas:
+      "photo title . add"
+      "photo activity . add";
+  }
+}

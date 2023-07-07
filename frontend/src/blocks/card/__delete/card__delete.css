@@ -1,0 +1,21 @@
+.card__delete {
+  display: block;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 18px;
+  height: 19px;
+  padding: 0;
+  background: transparent;
+  background-image: url(../../../images/rubbish-bin.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 18px 19px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 250ms ease-in;
+}
+
+.card__delete:hover {
+  opacity: 0.6;
+}

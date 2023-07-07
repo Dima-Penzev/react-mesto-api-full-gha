@@ -1,0 +1,18 @@
+.popup__text {
+  margin: 0 auto;
+  margin-top: 32px;
+  margin-bottom: 23px;
+  max-width: 270px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+}
+
+@media (max-width: 1000px) {
+  .popup__text {
+    margin-top: 40px;
+  }
+}
