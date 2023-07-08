@@ -8,6 +8,8 @@ const NotFoundError = require('../errors/notFoundError');
 const UnauthorizedError = require('../errors/unauthorizedError');
 const ConflictError = require('../errors/conflictError');
 
+const { NODE_ENV, JWT_SECRET } = process.env;
+
 const getUsers = (req, res, next) => User.find({})
   .then((users) => res.status(HTTP_STATUS_OK).send({ data: users }))
   .catch(next);
@@ -47,7 +49,7 @@ const login = (req, res, next) => {
 
   return User.findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, 'secret-key', {
+      const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'secret-key', {
         expiresIn: '7d',
       });
       return res.status(HTTP_STATUS_OK).send({ token });

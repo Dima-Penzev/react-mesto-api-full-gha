@@ -1,8 +1,10 @@
 const express = require('express');
+require('dotenv').config();
 const { HTTP_STATUS_INTERNAL_SERVER_ERROR } = require('node:http2').constants;
 const cors = require('cors');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 const routes = require('./routes/index');
 
 const { PORT = 4000 } = process.env;
@@ -21,7 +23,11 @@ app.use(cors({ origin: 'http://localhost:3000' }));
 
 app.use(express.json());
 
+app.use(requestLogger);
+
 app.use(routes);
+
+app.use(errorLogger);
 
 app.use(errors());
 
