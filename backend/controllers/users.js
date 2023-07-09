@@ -52,7 +52,7 @@ const login = (req, res, next) => {
       const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'secret-key', {
         expiresIn: '7d',
       });
-      return res.status(HTTP_STATUS_OK).cookie('jwt', token, { maxAge: 3600000, httpOnly: true }).cookie('loggedIn', true, { maxAge: 3600000 }).send({ data: email });
+      return res.status(HTTP_STATUS_OK).cookie('jwt', token, { maxAge: 3600000, httpOnly: true }).send({ data: email });
     })
     .catch(() => {
       next(
@@ -63,7 +63,7 @@ const login = (req, res, next) => {
 
 const logOut = async (req, res, next) => {
   try {
-    await res.status(HTTP_STATUS_OK).clearCookie('jwt').clearCookie('loggedIn').send({ massege: 'Вы вышли из своей учетной записи.' });
+    await res.status(HTTP_STATUS_OK).clearCookie('jwt').send({ massege: 'Вы вышли из своей учетной записи.' });
   } catch (err) {
     next(err);
   }
