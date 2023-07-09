@@ -35,7 +35,6 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (document.cookie === "loggedIn=true") {
       auth
       .getContent()
       .then((res) => {
@@ -47,7 +46,6 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
-    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
