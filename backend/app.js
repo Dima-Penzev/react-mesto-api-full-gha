@@ -1,9 +1,9 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 require('dotenv').config();
 const { HTTP_STATUS_INTERNAL_SERVER_ERROR } = require('node:http2').constants;
 const cors = require('cors');
 const mongoose = require('mongoose');
-const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const routes = require('./routes/index');
