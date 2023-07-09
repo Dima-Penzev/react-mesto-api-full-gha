@@ -1,4 +1,4 @@
-const BASE_URL = "http://api.mesto.full.nomoredomains.work";
+const BASE_URL = "https://api.mesto.full.nomoredomains.work";
 
 function requestData(url, option) {
   return fetch(url, option).then(getResponseData);

@@ -17,7 +17,7 @@ class Api {
   }
 
   getInitialCards() {
-    return this._request(`${this._baseUrl}/cards`, { 
+    return this._request(`${this._baseUrl}/cards`, {
       headers: this._headers,
       credentials: 'include',
      });
@@ -85,7 +85,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "http://api.mesto.full.nomoredomains.work",
+  baseUrl: "https://api.mesto.full.nomoredomains.work",
   headers: {
     "Content-Type": "application/json",
   },
