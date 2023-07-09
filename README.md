@@ -11,6 +11,6 @@
 
 IP-адрес 158.160.110.17
 
-Frontend https://...
+Frontend https://mesto.full.nomoredomains.work
 
-Backend https://...
+Backend https://api.mesto.full.nomoredomains.work
