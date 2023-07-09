@@ -1,16 +1,13 @@
 import headerLogo from "../images/header-logo.svg";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 
-function Header({ userEmail, loggedIn, resetStates }) {
+function Header({ userEmail, loggedIn, handleSignOut }) {
   const [isMenuOpened, setIsMenuOpened] = useState(false);
-  const navigate = useNavigate();
   const location = useLocation();
 
   function signOut() {
-    localStorage.removeItem("token");
-    navigate("/signin", { replace: true });
-    resetStates();
+    handleSignOut();
     toggleBtnMenu();
   }
 

@@ -3,6 +3,7 @@ require('dotenv').config();
 const { HTTP_STATUS_INTERNAL_SERVER_ERROR } = require('node:http2').constants;
 const cors = require('cors');
 const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const routes = require('./routes/index');
@@ -10,6 +11,8 @@ const routes = require('./routes/index');
 const { PORT = 4000 } = process.env;
 
 const app = express();
+
+app.use(cookieParser());
 
 mongoose.connect('mongodb://0.0.0.0:27017/mestodb', {
   useNewUrlParser: true,
@@ -19,7 +22,10 @@ mongoose.connect('mongodb://0.0.0.0:27017/mestodb', {
   console.log(err.message);
 });
 
-app.use(cors({ origin: 'http://mesto.full.nomoredomains.work' }));
+// app.use(cors({ origin: 'http://mesto.full.nomoredomains.work' }));
+app.use(cors({ origin: 'http://localhost:3000',
+  credentials: true,
+}));
 
 app.use(express.json());
 

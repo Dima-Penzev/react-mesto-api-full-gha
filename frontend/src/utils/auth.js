@@ -1,4 +1,5 @@
-const BASE_URL = "http://api.mesto.full.nomoredomains.work";
+// const BASE_URL = "http://api.mesto.full.nomoredomains.work";
+const BASE_URL = "http://localhost:4000";
 
 function requestData(url, option) {
   return fetch(url, option).then(getResponseData);
@@ -19,6 +20,7 @@ export function register(password, email) {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
+    credentials: 'include',
     body: JSON.stringify({ password, email }),
   });
 }
@@ -30,17 +32,29 @@ export function login(password, email) {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
+    credentials: 'include',
     body: JSON.stringify({ password, email }),
   });
 }
 
-export function getContent(token) {
+export function logout() {
+  return requestData(`${BASE_URL}/signout`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    credentials: 'include',
+  });
+}
+
+export function getContent() {
   return requestData(`${BASE_URL}/users/me`, {
     method: "GET",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
     },
+    credentials: 'include',
   });
 }

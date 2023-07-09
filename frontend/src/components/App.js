@@ -26,17 +26,28 @@ function App() {
   const [isConfirmPopupOpen, setIsConfirmPopupOpen] = useState(false);
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState({});
-  const [currentUser, setCurrentUser] = useState({ name: "", about: "" });
+  const [currentUser, setCurrentUser] = useState({ name: "", about: "", email: "" });
   const [cards, setCards] = useState([]);
   const [cardId, setCardId] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
-  const [userEmail, setUserEmail] = useState("");
   const [responseData, setResponseData] = useState({});
   const navigate = useNavigate();
 
   useEffect(() => {
-    checkToken();
+    if (document.cookie === "loggedIn=true") {
+      auth
+      .getContent()
+      .then((res) => {
+        if (res) {
+          setLoggedIn(true);
+          navigate("/main", { replace: true });
+        } 
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -52,23 +63,6 @@ function App() {
       });
     }
   }, [loggedIn]);
-
-  function checkToken() {
-    const token = localStorage.getItem("token");
-
-    if (token) {
-      auth
-        .getContent(token)
-        .then((res) => {
-          if (res) {
-            setLoggedIn(true);
-            setUserEmail(res.data.email);
-            navigate("/main", { replace: true });
-          }
-        })
-        .catch((err) => console.log(err));
-    }
-  }
 
   function closeAllPopups() {
     setIsEditProfilePopupOpen(false);
@@ -168,18 +162,19 @@ function App() {
   function handleLogin(userPassword, userEmail) {
     auth
       .login(userPassword, userEmail)
-      .then((res) => {
+      .then(() => {
         setLoggedIn(true);
-        setUserEmail(userEmail);
-        localStorage.setItem("token", res.token);
         navigate("/main", { replace: true });
       })
       .catch((err) => console.log(err));
   }
 
-  function resetStates() {
-    setLoggedIn(false);
-    setUserEmail("");
+  function handleSignOut() {
+    auth.logout().then((res) => {
+      setLoggedIn(false);
+      navigate("/signin", { replace: true });
+    })
+    .catch((err) => console.log(err));
   }
 
   function handleRegister(password, email) {
@@ -207,9 +202,9 @@ function App() {
     <div className="root">
       <CurrentUserContext.Provider value={currentUser}>
         <Header
-          userEmail={userEmail}
+          userEmail={currentUser.email}
           loggedIn={loggedIn}
-          resetStates={resetStates}
+          handleSignOut={handleSignOut}
         />
         <Routes>
           <Route
