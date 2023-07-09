@@ -35,17 +35,19 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (document.cookie === "loggedIn=true") {
       auth
       .getContent()
       .then((res) => {
         if (res) {
           setLoggedIn(true);
           navigate("/main", { replace: true });
-        } 
+        }
       })
       .catch((err) => {
         console.log(err);
       });
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
