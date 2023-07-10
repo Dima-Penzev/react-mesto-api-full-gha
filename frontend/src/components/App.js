@@ -42,7 +42,7 @@ function App() {
       .then((res) => {
         if (res) {
           setLoggedIn(true);
-          navigate("/", { replace: true });
+          navigate("/");
         }
       })
       .catch((err) => {
@@ -165,7 +165,7 @@ function App() {
       .login(userPassword, userEmail)
       .then(() => {
         setLoggedIn(true);
-        navigate("/", { replace: true });
+        navigate("/");
       })
       .catch((err) => console.log(err));
   }
@@ -173,7 +173,7 @@ function App() {
   function handleSignOut() {
     auth.logout().then((res) => {
       setLoggedIn(false);
-      navigate("/sign-in", { replace: true });
+      navigate("/sign-in");
     })
     .catch((err) => console.log(err));
   }
@@ -182,7 +182,7 @@ function App() {
     auth
       .register(password, email)
       .then(() => {
-        navigate("/sign-in", { replace: true });
+        navigate("/sign-in");
         setIsInfoTooltipOpen(true);
         setResponseData({
           image: successImg,
