@@ -23,8 +23,7 @@ mongoose.connect('mongodb://0.0.0.0:27017/mestodb', {
 });
 
 app.use(cors({
-  // origin: 'https://mesto.full.nomoredomains.work',
-  origin: 'http://localhost:3000',
+  origin: 'https://mesto.full.nomoredomains.work',
   credentials: true,
 }));
 
