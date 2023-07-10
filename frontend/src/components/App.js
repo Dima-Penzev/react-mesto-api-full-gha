@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import successImg from "../images/img-success.png";
 import errorImg from "../images/img-error.png";
 import "../index.css";
@@ -18,6 +18,7 @@ import Register from "./Register";
 import Login from "./Login";
 import ProtectedRouteElement from "./ProtectedRoute";
 import * as auth from "../utils/auth";
+import UnexistedPath from "./UnexistedPath";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
@@ -41,7 +42,7 @@ function App() {
       .then((res) => {
         if (res) {
           setLoggedIn(true);
-          navigate("/main", { replace: true });
+          navigate("/", { replace: true });
         }
       })
       .catch((err) => {
@@ -164,7 +165,7 @@ function App() {
       .login(userPassword, userEmail)
       .then(() => {
         setLoggedIn(true);
-        navigate("/main", { replace: true });
+        navigate("/", { replace: true });
       })
       .catch((err) => console.log(err));
   }
@@ -172,7 +173,7 @@ function App() {
   function handleSignOut() {
     auth.logout().then((res) => {
       setLoggedIn(false);
-      navigate("/signin", { replace: true });
+      navigate("/sign-in", { replace: true });
     })
     .catch((err) => console.log(err));
   }
@@ -181,7 +182,7 @@ function App() {
     auth
       .register(password, email)
       .then(() => {
-        navigate("/signin", { replace: true });
+        navigate("/sign-in", { replace: true });
         setIsInfoTooltipOpen(true);
         setResponseData({
           image: successImg,
@@ -208,22 +209,12 @@ function App() {
         />
         <Routes>
           <Route
-            path="/"
-            element={
-              loggedIn ? (
-                <Navigate to="/main" replace />
-              ) : (
-                <Navigate to="/signup" replace />
-              )
-            }
-          />
-          <Route
-            path="/signup"
+            path="/sign-up"
             element={<Register onRegister={handleRegister} />}
           />
-          <Route path="/signin" element={<Login onLogin={handleLogin} />} />
+          <Route path="/sign-in" element={<Login onLogin={handleLogin} />} />
           <Route
-            path="/main"
+            path="/"
             element={
               <ProtectedRouteElement
                 element={Main}
@@ -238,6 +229,7 @@ function App() {
               />
             }
           />
+          <Route path="/*" element={<UnexistedPath />}/>
         </Routes>
         <Footer />
         <EditProfilePopup

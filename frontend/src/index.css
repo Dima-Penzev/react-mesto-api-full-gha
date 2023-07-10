@@ -68,3 +68,5 @@
 @import url(./blocks/entry/__submit/entry__submit.css);
 @import url(./blocks/entry/__text/entry__text.css);
 @import url(./blocks/entry/__link/entry__link.css);
+
+@import url(./blocks/wrong-path/wrong-path.css);

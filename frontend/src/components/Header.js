@@ -25,17 +25,17 @@ function Header({ userEmail, loggedIn, handleSignOut }) {
             alt="Логотип-надпись место Россия"
           />
         </button>
-        {location.pathname === "/signin" && (
-          <Link className="header__entry header__entry_small" to="/signup">
+        {location.pathname === "/sign-in" && (
+          <Link className="header__entry header__entry_small" to="/sign-up">
             Регистрация
           </Link>
         )}
-        {location.pathname === "/signup" && (
-          <Link className="header__entry header__entry_small" to="/signin">
+        {location.pathname === "/sign-up" && (
+          <Link className="header__entry header__entry_small" to="/sign-in">
             Войти
           </Link>
         )}
-        {location.pathname === "/main" && (
+        {location.pathname === "/" && (
           <button
             className={`header__menu ${
               isMenuOpened ? "header__menu_close" : ""
