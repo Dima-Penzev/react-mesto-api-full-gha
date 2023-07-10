@@ -49,7 +49,7 @@ app.use((req, res, next) => {
   }
 
   if (method === 'OPTIONS') {
-    res.header('Access-Control-Allow-Credentials', 'true');
+    res.header('Access-Control-Allow-Credentials: true');
   }
 
   if (method === 'OPTIONS') {
