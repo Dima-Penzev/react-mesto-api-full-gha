@@ -49,6 +49,10 @@ app.use((req, res, next) => {
   }
 
   if (method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Credentials', true);
+  }
+
+  if (method === 'OPTIONS') {
     res.header('Access-Control-Allow-Headers', requestHeaders);
     return res.end();
   }
