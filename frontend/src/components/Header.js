@@ -25,13 +25,13 @@ function Header({ userEmail, loggedIn, handleSignOut }) {
             alt="Логотип-надпись место Россия"
           />
         </button>
-        {location.pathname === "/sign-in" && (
-          <Link className="header__entry header__entry_small" to="/sign-up">
+        {location.pathname === "/signin" && (
+          <Link className="header__entry header__entry_small" to="/signup">
             Регистрация
           </Link>
         )}
-        {location.pathname === "/sign-up" && (
-          <Link className="header__entry header__entry_small" to="/sign-in">
+        {location.pathname === "/signup" && (
+          <Link className="header__entry header__entry_small" to="/signin">
             Войти
           </Link>
         )}

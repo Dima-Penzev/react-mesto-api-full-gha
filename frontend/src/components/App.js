@@ -36,19 +36,17 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (document.cookie === "loggedIn=true") {
       auth
       .getContent()
       .then((res) => {
         if (res) {
           setLoggedIn(true);
-          navigate("/");
+          navigate("/", { replace: true });
         }
       })
       .catch((err) => {
         console.log(err);
       });
-    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -165,7 +163,7 @@ function App() {
       .login(userPassword, userEmail)
       .then(() => {
         setLoggedIn(true);
-        navigate("/");
+        navigate("/", { replace: true });
       })
       .catch((err) => console.log(err));
   }
@@ -173,7 +171,7 @@ function App() {
   function handleSignOut() {
     auth.logout().then((res) => {
       setLoggedIn(false);
-      navigate("/sign-in");
+      navigate("/signin", { replace: true });
     })
     .catch((err) => console.log(err));
   }
@@ -182,7 +180,7 @@ function App() {
     auth
       .register(password, email)
       .then(() => {
-        navigate("/sign-in");
+        navigate("/signin", { replace: true });
         setIsInfoTooltipOpen(true);
         setResponseData({
           image: successImg,
@@ -209,10 +207,10 @@ function App() {
         />
         <Routes>
           <Route
-            path="/sign-up"
+            path="/signup"
             element={<Register onRegister={handleRegister} />}
           />
-          <Route path="/sign-in" element={<Login onLogin={handleLogin} />} />
+          <Route path="/signin" element={<Login onLogin={handleLogin} />} />
           <Route
             path="/"
             element={
