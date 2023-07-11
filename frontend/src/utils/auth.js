@@ -1,4 +1,5 @@
 const BASE_URL = "https://api.mesto.full.nomoredomains.work";
+// const BASE_URL = "http://localhost:4000";
 
 function requestData(url, option) {
   return fetch(url, option).then(getResponseData);
