@@ -26,7 +26,7 @@ link to repository: https://github.com/Dima-Penzev/react-mesto-api-full-gha.git
 
 ## Links to project
 
-IP 158.160.110.17
+IP 158.160.50.243
 
 Frontend https://mesto.full.nomoredomains.work
 
